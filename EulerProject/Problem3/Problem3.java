@@ -4,22 +4,19 @@ class Problem3
 {
 	public static void main(String[] args)
 	{
-		long n=20;
-		ArrayList<int> arrayList=new ArrayList<>();
+		long n=600851475143L;
+		boolean check=false;
+		
 		
 		for(long i=2; i<=n; i++)
 		{
 			if(n%i==0)
 			{
-				arrayList.add(i);
-				System.out.print(i);
+				System.out.println(i);
 				n/=i;
-				i=1;
 				
 			}
 		}
-		
-		for(int i=x; i>1; i--)
 			
 			
 		
