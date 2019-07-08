@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-class Problem10
+class Problem10_test
 {
   public static void main(String[] args)
   {
@@ -16,7 +16,7 @@ class Problem10
       {
         if(i%prime.get(j)==0)
           break;
-        else if((j+1)==prime.size())
+        else if(prime.get(j)>Math.sqrt(i))
         {
           prime.add(i);
           sum+=(long)i;
