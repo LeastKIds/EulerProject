@@ -22,19 +22,21 @@ class Problem13
         sum[i]=sum[i]+Long.parseLong(splitStr[j][i]);
     }
 
+    //for(int i=4; i>=0; i--)
+    //  System.out.println(sum[i]);
+    long rest=0L;
     for(int i=4; i>=0; i--)
     {
-      long rest=0L;
-      if(rest>0)
+
+      System.out.println(rest);
+      if(rest>0L)
         sum[i]+=rest;
       int sumLength=Long.toString(sum[i]).length();
+      System.out.println(sumLength);
       if(i==0)
         break;
       else if(sumLength>10)
-      {
         rest=Long.parseLong(Long.toString(sum[i]).substring(0,sumLength-10));
-        System.out.println("cehck:");
-      }
     }
 
     System.out.println(sum[0]);
