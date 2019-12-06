@@ -1,3 +1,5 @@
+
+
 class Problem19
 {
   public static void main(String[] args)
@@ -34,16 +36,9 @@ class Problem19
         }
 
         if(day==1)
-        {
           count++;
-          System.out.println(year);
-          System.out.println(month);
-          System.out.println(day);
-        }
 
         }
-
-    System.out.println();
     System.out.println(count);
 
   }
