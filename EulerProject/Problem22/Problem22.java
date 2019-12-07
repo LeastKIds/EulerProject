@@ -8,8 +8,24 @@ class Problem22
 
     Arrays.sort(name);
     int nameLength=name.length;
+    int sum=0;
+    int sum_name=0;
+    int length=0;
+    int nameLength_sub=0;
 
-    
+    for(int i=0; i<nameLength; i++)
+    {
+      String[] charToString=name[i].split("");
+      nameLength_sub=name[i].length();
+      char[] namePice_sub=charToString.toCharArray();
+
+      for(int j=0; j<nameLength_sub; j++)
+      {
+        sum_name=(int)namePice_sub[j];
+      }
+    }
+
+
 
   }
 }
