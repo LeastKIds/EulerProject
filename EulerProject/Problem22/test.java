@@ -2,12 +2,10 @@ class test
 {
   public static void main(String[] args)
   {
-    char test='A';
-    char test1='B';
-    char test3='C';
+    char[] test=new char[]{'A','B','C','D','E'};
+    int sum_name=0;
+        sum_name=(int)
 
-    System.out.println((int)test);
-    System.out.println((int)test1);
-    System.out.println((int)test3);
+      sum+=((i+1)*sum_name);
   }
 }
