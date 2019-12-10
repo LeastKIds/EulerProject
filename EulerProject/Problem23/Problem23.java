@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.*;
 
 class Problem23
 {
@@ -33,28 +33,23 @@ class Problem23
         exceedNum.add(i);
     }
 
-    ArrayList<Integer> overlap=new ArrayList<>();
+    HashSet<Integer> overlap=new HashSet<>();
     int exceedSize=exceedNum.size();
     int exceedSum=0;
+    int exceedAdd=0;
     for(int i=0; i<exceedSize; i++)
-      for(int j=i; j<exceedSize; j++)
+      for(int j=i ; j<exceedSize; j++)
       {
-        exceedSum=exceedNum.get(i)+exceedNum.get(j);
-        if(exceedSum>MAX)
+        exceedAdd=exceedNum.get(i)+exceedNum.get(j);
+        if(exceedAdd>MAX)
           break;
-        else if(overlap.contains(exceedSum))
-          continue;
-        else
-          overlap.add(exceedSum);
+        overlap.add(exceedAdd);
+      }
 
+    for(int n : overlap)
+      exceedSum+=n;
 
-          sum-=exceedSum;
-          System.out.println(exceedSum);
-          System.out.println(sum);
-          System.out.println(i);
-        }
-
-    System.out.println(sum);
+    System.out.println(sum-exceedSum);
 
   }
 }
