@@ -37,10 +37,6 @@ class Problem24
       else
       {
         saveI=i;
-      //  for(int j=0; j<num.size(); j++)
-      //    result+=num.get(j);
-
-      //  System.out.println(result);
         break;
       }
 
