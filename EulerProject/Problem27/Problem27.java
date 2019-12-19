@@ -76,21 +76,24 @@ class Problem27
     n=1;
     loof2: while(true)
     {
-      for(int i=0; i<primeB.size(); i++)
+      for(int b=0; b<primeB.size(); b++)
       {
-        for(int j=0; j<primeA.size(); j++)
+        for(int a=0; a<primeA.size(); a++)
         {
-          result=n*n + n*primeA.get(j) + primeB.get(i);
+          result=n*n + n*primeA.get(a) + primeB.get(b);
           if(prime.contains(result))
             continue;
           else if(result<MAXINT)
           {
-            primeA.remove(j);
-            j--;
+            primeA.remove(a);
+            a--;
           }
           else
           {
-            
+            for(int i=0; i<prime.size(); i++)
+            {
+              
+            }
           }
 
         }
