@@ -25,8 +25,6 @@ class Problem27_test
       }
     }
 
-    ArrayList<Integer> prime=new ArrayList<>();
-    prime=primeB;
 
     ArrayList<Integer> primeA=new ArrayList<>();
     for(int i=(-MAXINT)+1; i<MAXINT; i++)
@@ -56,17 +54,23 @@ class Problem27_test
       }
     }
 
-
+    ArrayList<Integer> prime=new ArrayList<>();
     n=1;
-    primeBSize=primeB.size();
-    while(primeA.size()!=1)
+    int primeASize;
+    loof: while(primeA.size()!=1)
     {
+      primeASize=primeA.size();
+      primeBSize=primeB.size();
+
       for(int b=0; b<primeBSize; b++)
         for(int a=0; a<primeA.size(); a++)
         {
-          result=(n*n) + (n*primeA.get(a)) + primeB.get(b);
-          
+          result=n*n + n*primeA.get(a) + primeB.get(b);
+          prime.add(result);
         }
+
+      
+
     }
   }
 }
