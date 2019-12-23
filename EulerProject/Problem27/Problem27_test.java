@@ -30,47 +30,65 @@ class Problem27_test
     for(int i=(-MAXINT)+1; i<MAXINT; i++)
       primeA.add(i);
 
-    int bPlusOne;
+    int primeASize=primeA.size();
     primeBSize=primeB.size();
-    for(int i=0; i<primeBSize; i++)
-    {
-      bPlusOne=1+primeB.get(i);
-      if(primeA.contains(bPlusOne))
-        primeA.remove(primeA.indexOf(bPlusOne));
-      if(primeA.contains(-bPlusOne))
-        primeA.remove(primeA.indexOf(-bPlusOne));
-    }
-
-    int n=1;
-    int result;
-    int primeBSave=primeB.get(0);
-    for(int i=0; i<primeA.size(); i++)
-    {
-      result=1+primeA.get(i)+primeBSave;
-      if(result<=0)
-      {
-        primeA.remove(i);
-        i--;
-      }
-    }
+    int[][] result=new int[primeASize][primeBSize];
+    for(int a=0; a<primeASize; a++)
+      for(int b=0; b<primeBSize; b++)
+        result[a][b]=1;
 
     ArrayList<Integer> prime=new ArrayList<>();
-    n=1;
-    int primeASize;
-    loof: while(primeA.size()!=1)
+    prime.add(2);
+    int sum;
+    int n=1;
+    int count=primeASize*primeBSize;
+    loof: while(true)
     {
-      primeASize=primeA.size();
-      primeBSize=primeB.size();
-
-      for(int b=0; b<primeBSize; b++)
-        for(int a=0; a<primeA.size(); a++)
+      for(int a=0; a<primeASize; a++)
+      {
+        for(int b=0; b<primeBSize; b++)
         {
-          result=n*n + n*primeA.get(a) + primeB.get(b);
-          prime.add(result);
-        }
+          if(count==1)
+            break loof;
+          if(result[a][b]==0)
+            continue;
 
-      for(int )
+          sum=n*n + n*primeA.get(a) + primeB.get(b);
+          if(sum<0 || prime.contains(sum))
+          {
+            System.out.println("sum<0 or sum is prime/ sum : " + sum);
+            System.out.println("remove primeA : " + primeA.get(a));
+            System.out.println("remove primeB : " + primeB.get(b));
+            System.out.println("n : " + n);
+            System.out.println("count : " + count);
+            System.out.println();
+            result[a][b]=0;
+            count--;
+            continue;
+          }
+          else
+          {
+            int ruteSum=(int)Math.sqrt(sum);
+            for(int i=2; i<sum; i++)
+            {
+              if(sum%i==0)
+              {
+                result[a][b]=0;
+                count--;
+              }
+              else if(i>ruteSum)
+              {
+                prime.add(sum);
+                break;
+              }
+
+            }
+          }
+        }
+      }
+      n++;
 
     }
+
   }
 }

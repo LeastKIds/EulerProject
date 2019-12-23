@@ -4,10 +4,17 @@ class Problem27
 {
   public static void main(String[] args)
   {
+    long beforeTime=System.currentTimeMillis();
+
+
     final int MAXINT=1000;
-    int primeBSize;
+    int result=0;
+    int n=0;
+    int maxN=0;
+    int maxResult=0;
     ArrayList<Integer> primeB=new ArrayList<>();
     primeB.add(2);
+    int primeBSize;
     for(int i=3; i<MAXINT; i++)
     {
       primeBSize=primeB.size();
@@ -23,82 +30,37 @@ class Problem27
       }
     }
 
-    ArrayList<Integer> prime=new ArrayList<>();
     primeBSize=primeB.size();
-    for(int i=0; i<primeBSize; i++)
-      prime.add(primeB.get(i));
-
-    System.out.println(prime);
-
-    ArrayList<Integer> primeA=new ArrayList<>();
-    for(int i=(-MAXINT)+1; i<MAXINT; i++)
-      primeA.add(i);
-
-    primeBSize=primeB.size();
-    int bPlusOne;
-    for(int i=0; i<primeBSize; i++)
+    for(int a=(-MAXINT)+1; a<MAXINT; a++)
     {
-      bPlusOne=primeB.get(i)+1;
-      if(primeA.contains(bPlusOne))
-        primeA.remove(primeA.indexOf(bPlusOne));
-      else if(primeA.contains(-bPlusOne))
-        primeA.remove(primeA.indexOf(-bPlusOne));
-    }
-
-    //System.out.println(primeA);
-
-    int n=1;
-    int result;
-    int lastSize=0;
-    loof1: while(true)
-    {
-      for(int i=0; i<primeB.size(); i++)
+      for(int b=0; b<primeBSize; b++)
       {
-        for(int j=0; j<primeA.size(); j++)
+        n=0;
+        loof: while(true)
         {
-          result=n*n + n*primeA.get(j) + primeB.get(i);
-          if(result<=0)
-          {
-            //System.out.println(primeA.get(j));
-            primeA.remove(j);
-            j--;
-          }
-
-          if(lastSize==primeA.size())
-            break loof1;
-
-          lastSize=primeA.size();
-        }
-      }
-      n++;
-    }
-
-    n=1;
-    loof2: while(true)
-    {
-      for(int b=0; b<primeB.size(); b++)
-      {
-        for(int a=0; a<primeA.size(); a++)
-        {
-          result=n*n + n*primeA.get(a) + primeB.get(b);
-          if(prime.contains(result))
-            continue;
-          else if(result<MAXINT)
-          {
-            primeA.remove(a);
-            a--;
-          }
+          result=n*n + n*a + primeB.get(b);
+          if(result<0)
+            break;
           else
           {
-            for(int i=0; i<prime.size(); i++)
-            {
-              
-            }
+            for(int i=2; i<Math.sqrt(result); i++)
+              if(result%i==0)
+                break loof;
           }
 
+          n++;
+        }
+        if(n>maxN)
+        {
+          maxN=n;
+          maxResult=a*primeB.get(b);
         }
       }
     }
+    System.out.println(maxN);
+    System.out.println(maxResult);
 
+    long afterTime=System.currentTimeMillis();
+    System.out.println("Time : " + (afterTime-beforeTime));
   }
 }
