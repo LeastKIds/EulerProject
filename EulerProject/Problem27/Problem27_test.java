@@ -69,7 +69,7 @@ class Problem27_test
           prime.add(result);
         }
 
-      
+      for(int )
 
     }
   }
