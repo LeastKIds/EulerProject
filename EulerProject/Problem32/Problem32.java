@@ -1,5 +1,6 @@
 // 0 * 0000 = 0000
 // 00 * 000 = 0000
+// combination, permutation
 
 
 class Problem32
