@@ -1,3 +1,7 @@
+//https://limkydev.tistory.com/178
+
+
+
 import java.util.LinkedList;
 
 class test_2
