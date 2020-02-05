@@ -13,16 +13,20 @@ class test_2
 
     LinkedList<Integer> perArr=new LinkedList<Integer>();
     int[] perCheck=new int[n];
-    permutation(n,r,perArr,perCheck);
+    String[] oneToFivePermutation=new String[9*8*7*6*5];
+    int oneToFivePermutationCount=0;
+    permutation(n,r,perArr,perCheck,oneToFivePermutation,oneToFivePermutationCount);
+    for(int i=0; i<oneToFivePermutation.length; i++)
+      System.out.println(oneToFivePermutation[i]);
   }
 
-  public static void permutation(int n, int r, LinkedList<Integer> perArr, int[] perCheck)
+  public static void permutation(int n, int r, LinkedList<Integer> perArr, int[] perCheck, String[] oneToFivePermutation, int oneToFivePermutationCount)
   {
     if(perArr.size()==r)
     {
-      for(int i : perArr)
-        System.out.print(i+" ");
-      System.out.println();
+      for(int i=0; i<perArr.size(); i++)
+        oneToFivePermutation[oneToFivePermutationCount]+=perArr.get(i);
+      oneToFivePermutationCount++;
       return;
     }
 
@@ -31,7 +35,7 @@ class test_2
       {
         perArr.add(i);
         perCheck[i-1]=1;
-        permutation(n,r,perArr,perCheck);
+        permutation(n,r,perArr,perCheck, oneToFivePermutation,oneToFivePermutationCount);
         perCheck[i-1]=0;
         perArr.removeLast();
       }
